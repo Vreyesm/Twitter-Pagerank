@@ -1,0 +1,5 @@
+files/*
+data/*
+__pycache__/*
+.vscode/*
+*.pyc
