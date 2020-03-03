@@ -87,11 +87,11 @@ def PR(user, N, d = 0.85):
 
 if __name__ == '__main__':
     files_path = './data/'
-    #labels_file = 'labels.csv'
-    #edges_file = 'edges.csv'
+    labels_file = 'labels.csv'
+    edges_file = 'edges.csv'
 
-    labels_file = 'sample_labels.csv'
-    edges_file =  'sample_edges.csv'
+    #labels_file = 'sample_labels.csv'
+    #edges_file =  'sample_edges.csv'
 
 
     ensure_dir(files_path)
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     
     
 
-    initial_rank = 1.0 / len(users)
+    initial_rank = 1.0  / len(users)
     print(f'Initial rank for all users {initial_rank}')
 
     print('Initializing users rank')
