@@ -100,8 +100,8 @@ if __name__ == '__main__':
     print('Number of iterations', end=': ')
     n = int(input())
 
-    #if ( not load_users() ):
-    #    load_edges()
+    if ( not load_users() ):
+        load_edges()
 
 
     n_users = len(users)
