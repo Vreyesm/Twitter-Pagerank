@@ -81,17 +81,17 @@ def PR(user, N, d = 0.85):
 
     sum = 0
     for in_user in user.followers:
-        sum += in_user.rank
+        sum += in_user.rank_prev
     return base + sum
 
 
 if __name__ == '__main__':
     files_path = './data/'
-    #labels_file = 'labels.csv'
-    #edges_file = 'edges.csv'
+    labels_file = 'labels.csv'
+    edges_file = 'edges.csv'
 
-    labels_file = 'sample_labels.csv'
-    edges_file =  'sample_edges.csv'
+    #labels_file = 'sample_labels.csv'
+    #edges_file =  'sample_edges.csv'
 
 
     ensure_dir(files_path)
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     
     
 
-    initial_rank = 1.0 / len(users)
+    initial_rank = 1.0  / len(users)
     print(f'Initial rank for all users {initial_rank}')
 
     print('Initializing users rank')
@@ -128,6 +128,9 @@ if __name__ == '__main__':
             user = users[key]
             user.rank = PR(user, n_users)
         iteration += 1
+        for key in users:
+            user = users[key]
+            user.rank_prev = user.rank
 
     users_list = [ u for u in users.values() ]
     users_list.sort(key=lambda u: u.rank, reverse=True)
@@ -141,5 +144,7 @@ if __name__ == '__main__':
         #print(parse_double(str(top)))
         print(f'{user.tag}: {user.rank}')
 
+
+    users = None
     input("\nPress enter to finish\n")
     

@@ -4,4 +4,5 @@ class User:
         self.key = key
         self.tag = tag
         self.followers = followers
-        self.rank = rank
+        self.rank_prev = rank
+        self.rank = 0
