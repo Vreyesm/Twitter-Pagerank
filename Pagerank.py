@@ -36,7 +36,7 @@ def load_users():
         for key in users:
             user = users[key]
             if (key != user.key):
-                prin('error')
+                print('error')
         return False
 
 def load_edges():
@@ -100,8 +100,8 @@ if __name__ == '__main__':
     print('Number of iterations', end=': ')
     n = int(input())
 
-    if ( not load_users() ):
-        load_edges()
+    #if ( not load_users() ):
+    #    load_edges()
 
 
     n_users = len(users)
