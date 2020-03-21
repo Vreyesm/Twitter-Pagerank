@@ -69,6 +69,15 @@ def load_edges():
             followed = users[user_followed_key]
             follower = users[user_follower_key]
             followed.followers.append(follower)
+
+        to_delete = []
+        for user_key in users:
+            user = users[user_key]
+            if len(user.followers):
+                print(f'user {user.tag} has no followers')
+                del users[user_key]
+
+        
         print (f'Number of edges: {edges_counter}')
         print (f'Final number of users: {len(users)}')
     
@@ -79,10 +88,13 @@ def load_edges():
 def PR(user, N, d = 0.85):
     base = (1 - d) / N
 
-    sum = 0
+    s = 0
+    
     for in_user in user.followers:
-        sum += in_user.rank_prev
-    return base + sum
+        outdegree = len(in_user.followers)
+        print(f'followed by: {in_user.tag}')
+        s += (in_user.rank_prev) / outdegree
+    return base + s
 
 
 if __name__ == '__main__':
@@ -117,8 +129,6 @@ if __name__ == '__main__':
         user.rank = initial_rank
         
         #print(f'User {user.tag} has {len(user.followers)} followers')
-
-    exit
 
     print('Running Pagerank')
 
