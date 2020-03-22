@@ -6,3 +6,4 @@ class User:
         self.followers = followers
         self.rank_prev = rank
         self.rank = 0
+        self.history = []
